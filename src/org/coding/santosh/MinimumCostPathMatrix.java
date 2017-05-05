@@ -4,15 +4,51 @@ public class MinimumCostPathMatrix {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-int arr[][] = {
-		{3,2,8},
-		{1,9,7},
-		{10,8,2},
-		{6,4,3}};
-int sum = MinimumCost(arr,3,2);
-System.out.println(sum);
+		int arr[][] = {
+		{3,2,1},
+		{1,9,1},
+		{0,5,1},
+		{6,5,3}};
+	int sum = MinimumCostDP(arr,3,2);
+	System.out.println(sum);
 	}
 
+	public static int MinimumCostDP(int arr[][] , int x , int y)
+	{
+		if(x < 0 || y < 0 || x > arr.length || y > arr.length)
+			return -5;
+		int sum = 0;
+		int r = arr.length;
+		int c = arr[0].length;
+		int [][] ResultArray = new int[r+1][c+1];
+		
+		//sum = arr[0][0];
+		
+		for(int i = 0 ; i < r ; i++)
+		{
+			ResultArray[i][0] = sum + arr[i][0];
+			sum = ResultArray[i][0];
+		}
+		
+		sum = 0;
+		
+		for(int j = 0 ; j < c ; j++)
+		{
+			ResultArray[0][j] = sum + arr[0][j];
+			sum = ResultArray[0][j];
+		}
+		
+		for(int i = 1; i < r ; i++)
+		{
+			for(int j = 1 ; j < c ; j++)
+			{
+				ResultArray[i][j] = arr[i][j] + Min(ResultArray[i-1][j-1],ResultArray[i-1][j],ResultArray[i][j-1]);
+			}
+		}
+		
+		return ResultArray[x][y];
+	}
+	
 	public static int MinimumCost(int arr[][] , int x , int y)
 	{
 		if(x < 0 || y < 0 || x > arr.length || y > arr.length)
@@ -76,6 +112,8 @@ System.out.println(sum);
 		}
 			return sum;
 		}	
+	
+	
 	
 	public static int Min(int x ,int y ,int z)
 	{
