@@ -1,4 +1,4 @@
-package com.coding.problems;
+package org.coding.santosh;
 
 import java.util.HashMap;
 

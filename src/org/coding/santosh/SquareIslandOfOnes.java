@@ -1,4 +1,4 @@
-package com.coding.problems;
+package org.coding.santosh;
 
 public class SquareIslandOfOnes {
 
