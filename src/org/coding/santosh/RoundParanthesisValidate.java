@@ -4,7 +4,8 @@ public class RoundParanthesisValidate {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String x = "(345)456(56)()";
+		String x = "((BCD)AE)";
+	//	String x = ")(PH)N(X)";
 		if(ParanthesisValidate(x))
 			System.out.println("The Expression is Valid");
 		else
