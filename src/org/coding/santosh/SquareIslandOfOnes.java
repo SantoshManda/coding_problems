@@ -21,7 +21,7 @@ public class SquareIslandOfOnes {
     int r = arr.length;
     int c = arr[0].length;
     int p,q, result, MaxResult;
-    int currMax = 2, MaxValue = 2 ,MaxX , MaxY;
+    int currMax = 2, MaxValue = 2;
     boolean value = false;
     for(int i = 0 ; i < r ; i++)
     {
@@ -42,8 +42,6 @@ public class SquareIslandOfOnes {
     				
     				MaxValue = MaxValue > 2 ? MaxValue : 2;
     				currMax = 2;
-    				MaxX = i ;
-    				MaxY = j ;
     				while(value)
     				{
     				p++;
@@ -54,8 +52,6 @@ public class SquareIslandOfOnes {
     				if(value)
     					{
     					currMax = MaxValue+1;
-    					MaxX = i ;
-        				MaxY = j ;
     					}
     				MaxValue = (MaxValue > currMax ? MaxValue : currMax);
     				}
@@ -72,6 +68,7 @@ public class SquareIslandOfOnes {
     Scanner s = new Scanner(System.in);
     int x = s.nextInt();
     MaxResult =  MaxSumSquareIsland(arr1,x);
+    s.close();
     if(MaxResult > 0 )
     System.out.println("Maxium Square with "+ x + "*" + x +" dimentions from MaxSumSquareIsland() is  "+MaxResult);
     else
