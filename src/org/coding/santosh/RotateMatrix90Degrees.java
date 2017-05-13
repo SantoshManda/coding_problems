@@ -11,6 +11,31 @@ public class RotateMatrix90Degrees {
 				{9,10,11,12},
 				{13,14,15,16}};
 		ArrayList<ArrayList<Integer>> a = new ArrayList<ArrayList<Integer>>();
+		ArrayList<Integer> x = new ArrayList<Integer>();
+		x.add(new Integer(1));
+		x.add(new Integer(2));
+		x.add(new Integer(3));
+		x.add(new Integer(4));
+		ArrayList<Integer> x1 = new ArrayList<Integer>();
+		x1.add(new Integer(5));
+		x1.add(new Integer(6));
+		x1.add(new Integer(7));
+		x1.add(new Integer(8));
+		ArrayList<Integer> x2 = new ArrayList<Integer>();
+		x2.add(new Integer(9));
+		x2.add(new Integer(10));
+		x2.add(new Integer(11));
+		x2.add(new Integer(12));
+		ArrayList<Integer> x3 = new ArrayList<Integer>();
+		x3.add(new Integer(13));
+		x3.add(new Integer(14));
+		x3.add(new Integer(15));
+		x3.add(new Integer(16));
+		a.add(x);
+		a.add(x1);
+		a.add(x2);
+		a.add(x3);
+		Rotate90DByTransposeSwap(a);
 		
 		/*int arr[][]={{1,2}
 		,{3,4}};*/
@@ -46,7 +71,7 @@ public class RotateMatrix90Degrees {
 			}
 			start++;end--;
 		}
-		for(int i = 0 ; i < arr.length;i++)
+		/*for(int i = 0 ; i < arr.length;i++)
 		{
 			System.out.print("[");
 			for(int j = 0 ; j < arr.length;j++)
@@ -61,7 +86,7 @@ public class RotateMatrix90Degrees {
 			if(i!= arr.length-1)
 			System.out.print(",");
 			System.out.println();
-		}
+		}*/
 	}
 	
 	public void rotate(ArrayList<ArrayList<Integer>> arr) {
@@ -113,12 +138,53 @@ public class RotateMatrix90Degrees {
 			System.out.print("]");
 		}
 
-	/*public static void swap(int arr[][],int i,int j,int k, int l)
+	
+	
+	
+	}
+	public static void swap(ArrayList<ArrayList<Integer>> x,int i,int j,int k, int l)
 	{
 		int temp;
-		temp = arr[i][j];
-		arr[i][j]=arr[k][l];
+		temp = x.get(i).get(j);
+		x.get(i).set(j, x.get(k).get(l));
+		x.get(k).set(l, temp);
 		//arr[k][l];
-	}*/
+	}
+	public static void Rotate90DByTransposeSwap(ArrayList<ArrayList<Integer>> x){
+		//Rotate 90 Degree clock wise
+		//1 : change matrix into its transpose
+		//2 : swap all row element values i.e [0][0] <- [0][2] so on..
+		
+		for(int i = 0 ; i < x.size() ; i++)
+		{
+			for(int j = i ; j < x.get(i).size();j++)
+			{
+				//x.get(i).set(j, x.get(j).get(i));
+				swap(x,i,j,j,i);
+			}
+		}
+		
+		for(int i = 0;i < x.size();i++)
+		{
+			for(int j=0,k = x.get(i).size()-1;j<x.get(i).size()/2;j++)
+			{
+				//x.get(i).set(j, x.get(i).get(k-j));
+				swap(x,i,j,i,k-j);
+			}
+		}
+		System.out.println();
+		for(ArrayList<Integer> q : x)
+		{
+			System.out.print("[");
+			for(Integer k : q)
+			{	
+				System.out.print(k.intValue());
+				System.out.print(" ");
+			}
+			
+			System.out.print(" ");
+			System.out.print("]");
+			System.out.println();
+		}
 	}
 }
