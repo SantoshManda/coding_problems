@@ -1,4 +1,4 @@
-package org.coding.santosh;
+package org.coding.santosh.InterviewBit;
 
 import java.util.ArrayList;
 
