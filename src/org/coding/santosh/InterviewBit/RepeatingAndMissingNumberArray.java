@@ -29,24 +29,47 @@ public class RepeatingAndMissingNumberArray {
 
 	public static List<Integer> RepeatingMissingArrayEquation(final List<Integer> A)
 	{
-		int size = A.size();
-		int repeating_number = 0;
-		int missing_number =0;
-		long sum = 0; 
-		long sum_squares = 0;
-		long array_sum = A.stream().mapToLong(p -> p).sum();
-		sum = (long) ((Math.pow(size,2)+size)/2);
-		long diff = array_sum-sum;
-		long array_square = A.stream().mapToLong(p -> p*p).sum();
-		sum_squares = (long) ((long) (2*(Math.pow(size, 3))+3*(Math.pow(size, 2))+size)/6);
-		long diff_sqr =  array_square - sum_squares;
-		long sum_arr = diff_sqr/diff;
-		repeating_number = (int) (sum_arr+diff)/2;
-		missing_number = (int) (repeating_number-diff);
-		ArrayList<Integer> result = new ArrayList<Integer>();
-		result.add(repeating_number);
-		result.add(missing_number);
-		return result;
+		 long size =(long) A.size();
+	        ArrayList<Integer> result = new ArrayList<Integer>();
+	        long array_sum = 0;
+	        long array_square = 0;
+	        if(size !=0 )
+	        {
+	        for(Integer x : A)
+	        {
+	            if(x < 1 || x > size)
+	            {
+	                System.out.println("Invalid Input");
+	                result.add(0);
+	                return result;
+	            }
+	            else
+	            {
+	              array_sum = array_sum+(long) x;
+	              array_square = array_square + (long)x*(long)x;
+	            }
+	        }
+			int repeating_number = 0;
+			int missing_number =0;
+			long sum = 0; 
+			long sum_squares = 0;
+		//	long array_sum = A.stream().mapToLong(p -> p).sum();
+		//	sum = (long) ((Math.pow(size,2)+size)/2);
+			sum =  (size*(size+1))/2;
+			long diff = array_sum-sum;
+		//	long array_square = A.stream().mapToLong(p -> p*p).sum();
+		//	sum_squares = (long) ((long) (2*(Math.pow(size, 3))+3*(Math.pow(size, 2))+size)/6);
+			sum_squares =  (size*(size+1)*(2*size+1))/6;
+			long diff_sqr =  array_square - sum_squares;
+			long sum_arr = diff_sqr/diff;
+			repeating_number = (int) (sum_arr+diff)/2;
+			missing_number = (int) (repeating_number-diff);
+			
+			result.add(repeating_number);
+			result.add(missing_number);
+			
+	        }
+	        return result;
 	}
 	public static List<Integer> RepeatingMissingArray(final List<Integer> A)
 	{
