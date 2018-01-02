@@ -37,8 +37,6 @@ public static int returnMax(List<Integer> arr)
 	}
 	return ans;
 }
-
-
 public static int MaxSumContiguousKadaneAlgorithm(ArrayList<Integer> arr)
 {
 	
