@@ -20,13 +20,34 @@ public class RepeatingAndMissingNumberArray {
 		arr.add(2);
 		arr.add(5);
 		arr.add(3);
-		result = RepeatingMissingArray(arr);
+		result = RepeatingMissingArrayEquation(arr);
 		for(Integer x : result)
 		{
 			System.out.println(x);
 		}
 	}
 
+	public static List<Integer> RepeatingMissingArrayEquation(final List<Integer> A)
+	{
+		int size = A.size();
+		int repeating_number = 0;
+		int missing_number =0;
+		long sum = 0; 
+		long sum_squares = 0;
+		long array_sum = A.stream().mapToLong(p -> p).sum();
+		sum = (long) ((Math.pow(size,2)+size)/2);
+		long diff = array_sum-sum;
+		long array_square = A.stream().mapToLong(p -> p*p).sum();
+		sum_squares = (long) ((long) (2*(Math.pow(size, 3))+3*(Math.pow(size, 2))+size)/6);
+		long diff_sqr =  array_square - sum_squares;
+		long sum_arr = diff_sqr/diff;
+		repeating_number = (int) (sum_arr+diff)/2;
+		missing_number = (int) (repeating_number-diff);
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.add(repeating_number);
+		result.add(missing_number);
+		return result;
+	}
 	public static List<Integer> RepeatingMissingArray(final List<Integer> A)
 	{
 		int Repeating_value = Integer.MIN_VALUE;
